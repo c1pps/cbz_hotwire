@@ -1,0 +1,477 @@
+html {
+    overflow: hidden;
+}
+
+.main {
+    position: absolute;
+    bottom: 0;
+    right: -40vw;
+    width: 33.35vw;
+    height: 30vw;
+    transition: right 0.75s;
+    pointer-events: none;
+}
+
+.game {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+}
+
+/* ============================== SCREWDRIVER ============================== */
+
+#gameScrew {
+    background-image: url("./assets/Dashboard.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    pointer-events: none;
+}
+
+.bigScrewdriver {
+    z-index: 10;
+    position: absolute;
+    top: 14vw;
+    left: -3.5vw;
+    height: 17.5vw;
+    width: 17.5vw;
+    transition: top 0.15s,left 0.15s;
+    background-image: url("./assets/Big-Screwdriver.png");
+    filter: drop-shadow(0 0 0.55vw rgba(255, 255, 255, 1.0));
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    pointer-events: all;
+}
+
+.smallScrewdriver {
+    z-index: 5;
+    display: none;
+    position: absolute;
+    top: 11.65vw;
+    left: 8.25vw;
+    height: 10.5vw;
+    width: 10.5vw;
+    background-image: url("./assets/Small-Screwdriver-1.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    pointer-events: none;
+}
+
+.crackedKeyHole {
+    z-index: 1;
+    display: none;
+    position: absolute;
+    opacity: 1;
+    top: 13.58vw;
+    left: 16.0vw;
+    height: 4.25vw;
+    width: 4.25vw;
+    transition: top 0.15s,left 0.15s;
+    background-image: url("./assets/Cracked-Key-Hole.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    pointer-events: none;
+}
+
+.rotatingCircle {
+    position: absolute;
+    z-index: 20;
+    display: none;
+    top: 12.9vw;
+    left: 15.95vw;
+    transform: rotate(-320deg);
+    height: 5.5vw;
+    width: 5.5vw;
+    background-image: url("./assets/Rotate-1.png");
+    -webkit-filter: drop-shadow(0 0 0.55vw rgba(255, 255, 255, 1.0));
+    -webkit-transition: -webkit-filter 0.25s;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    pointer-events: all;
+}
+
+/* ============================== SPARK CONTACT ============================== */
+
+#gameSpark {
+    background-image: url("./assets/Dashboard.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    pointer-events: none;
+}
+
+.wpanel {
+    position: absolute;
+    left: 5.5vw;
+    right: 3vw;
+    top: 8.5vw;
+    bottom: 7vw;
+    /* comic look: halftone dot print + double black outline + hard cel shading */
+    background-color: #2b2c33;
+    background-image: radial-gradient(rgba(0, 0, 0, 0.30) 19%, transparent 21%);
+    background-size: 0.62vw 0.62vw;
+    border: 0.55vw solid #000;
+    border-radius: 1.1vw;
+    box-shadow:
+        inset 0 0.6vw 0 rgba(255, 255, 255, 0.12),
+        inset 0 -1vw 0 rgba(0, 0, 0, 0.5),
+        inset 0 0 0 0.2vw rgba(255, 255, 255, 0.05),
+        0 0 0 0.3vw #000,
+        0.9vw 1.2vw 0 rgba(0, 0, 0, 0.55);
+    pointer-events: all;
+    overflow: visible;
+}
+
+.wpanel .plabel {
+    position: absolute;
+    top: -2.6vw;
+    left: 0.4vw;
+    font-family: "Arial Black", Arial, sans-serif;
+    font-size: 1.05vw;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #f2e9d8;
+    text-shadow:
+        -0.1vw -0.1vw 0 #000,
+        0.1vw -0.1vw 0 #000,
+        -0.1vw 0.1vw 0 #000,
+        0.1vw 0.1vw 0 #000,
+        0.18vw 0.18vw 0 #000;
+}
+
+.wscrew {
+    position: absolute;
+    width: 1vw;
+    height: 1vw;
+    border-radius: 50%;
+    background: #8f9097;
+    border: 0.16vw solid #000;
+    box-shadow: inset -0.1vw -0.12vw 0 rgba(0, 0, 0, 0.45);
+}
+.wscrew::after {
+    content: "";
+    position: absolute;
+    left: 12%;
+    right: 12%;
+    top: 42%;
+    height: 16%;
+    background: #000;
+    transform: rotate(35deg);
+}
+
+/* stripped ignition wires meeting in the middle (spark gap) — flat comic look */
+.swire {
+    position: absolute;
+    top: 30%;
+    width: 34%;
+    height: 1.9vw;
+    background: #4a4b54;
+    border: 0.3vw solid #000;
+    box-shadow:
+        inset 0 0.35vw 0 rgba(255, 255, 255, 0.16),
+        inset 0 -0.5vw 0 rgba(0, 0, 0, 0.4);
+}
+.swire.left { left: 6%; border-radius: 0.9vw 0 0 0.9vw; }
+.swire.right { right: 6%; border-radius: 0 0.9vw 0.9vw 0; }
+/* copper stripped tip at the inner end of each wire */
+.swire.left::after, .swire.right::after {
+    content: "";
+    position: absolute;
+    top: -0.18vw; bottom: -0.18vw;
+    width: 1.5vw;
+    background: #eaa62f;
+    border: 0.24vw solid #000;
+    box-shadow: inset 0 0.3vw 0 rgba(255, 240, 190, 0.7);
+}
+.swire.left::after { right: -0.7vw; border-radius: 0 0.5vw 0.5vw 0; }
+.swire.right::after { left: -0.7vw; border-radius: 0.5vw 0 0 0.5vw; }
+.swire.live::after { background: #fff2b0; box-shadow: 0 0 0.7vw 0.2vw rgba(255, 230, 120, 1); }
+
+.swiregap {
+    position: absolute;
+    top: 28.5%;
+    left: 50%;
+    margin-left: -1vw;
+    width: 2vw;
+    height: 2.4vw;
+    pointer-events: none;
+}
+
+/* current gauge — chunky comic meter */
+.sparktrack {
+    position: absolute;
+    left: 8%;
+    right: 8%;
+    top: 62%;
+    height: 3vw;
+    background: #14151a;
+    border: 0.5vw solid #000;
+    border-radius: 0.6vw;
+    box-shadow: inset 0 0.4vw 0 rgba(0, 0, 0, 0.55),
+                inset 0 -0.25vw 0 rgba(255, 255, 255, 0.06),
+                0 0 0 0.22vw #000;
+    overflow: hidden;
+    pointer-events: all;
+}
+.sparkzone {
+    position: absolute;
+    top: 0; bottom: 0;
+    background: repeating-linear-gradient(-45deg, #34d64f 0 0.55vw, #1f8f34 0.55vw 1.1vw);
+    box-shadow: inset 0 0 0 0.18vw #0a3d16;
+    border-left: 0.22vw solid #000;
+    border-right: 0.22vw solid #000;
+}
+.sparkneedle {
+    position: absolute;
+    top: -0.35vw; bottom: -0.35vw;
+    left: 0;
+    width: 0.55vw;
+    margin-left: -0.275vw;
+    background: #ffe45c;
+    border: 0.16vw solid #000;
+    box-shadow: 0 0 0.5vw 0.12vw rgba(255, 228, 92, 0.9);
+}
+
+/* round progress pips */
+.sparkpips {
+    position: absolute;
+    left: 0; right: 0;
+    top: 82%;
+    display: flex;
+    justify-content: center;
+    gap: 0.8vw;
+}
+.sparkpip {
+    width: 1.4vw;
+    height: 1.4vw;
+    border-radius: 50%;
+    background: #2c2d33;
+    border: 0.3vw solid #000;
+    box-shadow: inset 0 0.18vw 0 rgba(255, 255, 255, 0.14),
+                inset 0 -0.18vw 0 rgba(0, 0, 0, 0.5);
+}
+.sparkpip.done {
+    background: #34d64f;
+    box-shadow: inset 0 0.18vw 0 rgba(255, 255, 255, 0.5),
+                0 0 0.5vw rgba(56, 194, 74, 0.85);
+}
+
+.spark {
+    position: absolute;
+    z-index: 12;
+    display: none;
+    width: 4vw;
+    height: 4vw;
+    margin: -2vw 0 0 -2vw;
+    pointer-events: none;
+    font-size: 3.2vw;
+    line-height: 4vw;
+    text-align: center;
+    color: #ffe45c;
+    text-shadow:
+        -0.12vw -0.12vw 0 #000,
+        0.12vw -0.12vw 0 #000,
+        -0.12vw 0.12vw 0 #000,
+        0.12vw 0.12vw 0 #000;
+    animation: sparkpop 0.22s infinite alternate;
+}
+
+@keyframes sparkpop {
+    from { transform: scale(0.7) rotate(-12deg); }
+    to   { transform: scale(1.25) rotate(14deg); }
+}
+
+/* ============================== IMMOBILISER ============================== */
+
+#gameImmo {
+    background-image: url("./assets/Dashboard.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    pointer-events: none;
+}
+
+.ipanel {
+    position: absolute;
+    left: 6vw;
+    right: 3.5vw;
+    top: 8vw;
+    bottom: 7.5vw;
+    /* comic look: halftone dot print + double black outline + hard cel shading */
+    background-color: #2b2c33;
+    background-image: radial-gradient(rgba(0, 0, 0, 0.30) 19%, transparent 21%);
+    background-size: 0.62vw 0.62vw;
+    border: 0.55vw solid #000;
+    border-radius: 1.1vw;
+    box-shadow:
+        inset 0 0.6vw 0 rgba(255, 255, 255, 0.12),
+        inset 0 -1vw 0 rgba(0, 0, 0, 0.5),
+        inset 0 0 0 0.2vw rgba(255, 255, 255, 0.05),
+        0 0 0 0.3vw #000,
+        0.9vw 1.2vw 0 rgba(0, 0, 0, 0.55);
+    pointer-events: all;
+}
+
+.iscreen {
+    position: absolute;
+    left: 7%;
+    right: 7%;
+    top: 9%;
+    height: 58%;
+    /* retro CRT: green screen + scanlines */
+    background-color: #1e2f1c;
+    background-image: repeating-linear-gradient(rgba(0, 0, 0, 0.28) 0 0.14vw, transparent 0.14vw 0.42vw);
+    border: 0.45vw solid #000;
+    border-radius: 0.5vw;
+    box-shadow:
+        inset 0 0 1.2vw rgba(0, 0, 0, 0.7),
+        inset 0 0.35vw 0 rgba(0, 0, 0, 0.5),
+        0 0 0 0.2vw #000;
+    font-family: "Courier New", monospace;
+    overflow: hidden;
+}
+
+.itarget {
+    margin-top: 6%;
+    text-align: center;
+    color: #8fdc8a;
+    font-size: 1.3vw;
+    font-weight: bold;
+    letter-spacing: 0.2vw;
+    white-space: nowrap;
+    text-shadow: 0 0 0.4vw rgba(120, 255, 130, 0.6);
+}
+
+.islots {
+    display: flex;
+    justify-content: center;
+    gap: 0.6vw;
+    margin-top: 6%;
+}
+
+.islot {
+    width: 2.4vw;
+    height: 3.2vw;
+    background: #16240f;
+    border: 0.3vw solid #000;
+    border-radius: 0.3vw;
+    color: #d9ffd2;
+    font-size: 2.15vw;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 0.25vw 0 rgba(140, 255, 150, 0.14),
+                inset 0 -0.35vw 0 rgba(0, 0, 0, 0.55),
+                0 0 0 0.16vw #000;
+    text-shadow: 0 0 0.5vw rgba(120, 255, 130, 0.8);
+}
+.islot.locked {
+    color: #79e86e;
+    background: #1d3315;
+}
+.islot.err {
+    color: #ff7d70;
+    background: #3a1712;
+    animation: ishake 0.25s;
+}
+
+@keyframes ishake {
+    0%   { transform: translateX(0); }
+    25%  { transform: translateX(-0.35vw); }
+    50%  { transform: translateX(0.3vw); }
+    75%  { transform: translateX(-0.2vw); }
+    100% { transform: translateX(0); }
+}
+
+.ibrand {
+    position: absolute;
+    bottom: 6%;
+    width: 100%;
+    text-align: center;
+    font-family: "Arial Black", Arial, sans-serif;
+    font-size: 1vw;
+    font-weight: 900;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #b9bcc6;
+    text-shadow: 0.14vw 0.14vw 0 #000;
+}
+
+.ikeys {
+    position: absolute;
+    bottom: 16%;
+    left: 12%;
+    right: 12%;
+    height: 12%;
+    display: flex;
+    justify-content: space-between;
+}
+.ikey {
+    width: 13%;
+    height: 100%;
+    background: #4a4c54;
+    border: 0.28vw solid #000;
+    border-radius: 0.35vw;
+    box-shadow: inset 0 0.25vw 0 rgba(255, 255, 255, 0.16),
+                inset 0 -0.3vw 0 rgba(0, 0, 0, 0.5);
+}
+
+/* ============================== SHARED HUD ============================== */
+
+.timerBarBackground {
+    position: absolute;
+    z-index: 10;
+    width: 25vw;
+    height: 2.5vw;
+    bottom: 0vw;
+    right: 0vw;
+    background: #17130d;
+    border: 0.5vw solid black;
+    border-radius: 0.5vw;
+    box-shadow: inset 0 0.12vw 0 rgba(255, 255, 255, 0.08);
+}
+
+.timerBar {
+    position: absolute;
+    z-index: 15;
+    width: 0%;
+    max-width: 23.5vw;
+    height: 1.5vw;
+    bottom: 0.5vw;
+    left: 0.75vw;
+    transition: none;
+    background: repeating-linear-gradient(-45deg, #f2b632 0 0.6vw, #d3961c 0.6vw 1.2vw);
+    border-radius: 0.25vw;
+    box-shadow: inset 0 -0.18vw 0 rgba(0, 0, 0, 0.35);
+}
+
+.hintText {
+    position: absolute;
+    z-index: 12;
+    right: 0;
+    bottom: 2.9vw;
+    width: 25vw;
+    text-align: center;
+    font-family: "Arial Black", Arial, sans-serif;
+    font-size: 0.95vw;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #ffffff;
+    text-shadow:
+        -0.1vw -0.1vw 0 #000,
+        0.1vw -0.1vw 0 #000,
+        -0.1vw 0.1vw 0 #000,
+        0.1vw 0.1vw 0 #000,
+        0.2vw 0.2vw 0 #000;
+    pointer-events: none;
+}
